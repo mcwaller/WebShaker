@@ -15,18 +15,21 @@ AppWebsiteVisits.propTypes = {
 };
 
 export default function AppWebsiteVisits({ title, subheader, chartLabels, chartData, ...other }) {
+  // Convert the chartLabels to use time format (HH:mm)
+  const timeFormatLabels = chartLabels.map((time) => time.substring(0, 5)); // Assuming the original labels are in "HH:mm:ss" format
+
   const chartOptions = useChart({
     plotOptions: { bar: { columnWidth: '16%' } },
     fill: { type: chartData.map((i) => i.fill) },
-    labels: chartLabels,
-    xaxis: { type: 'datetime' },
+    labels: timeFormatLabels, // Use the modified time format labels
+    xaxis: { type: 'category' }, // Change x-axis type to 'category' since we are using time labels
     tooltip: {
       shared: true,
       intersect: false,
       y: {
         formatter: (y) => {
           if (typeof y !== 'undefined') {
-            return `${y.toFixed(0)} visits`;
+            return `${y.toFixed(0)} %`;
           }
           return y;
         },
