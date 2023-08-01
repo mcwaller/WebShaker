@@ -8,7 +8,7 @@ import useResponsive from '../hooks/useResponsive';
 import Logo from '../components/logo';
 import Iconify from '../components/iconify';
 // sections
-import { LoginForm } from '../sections/auth/login';
+import { RegisterForm } from '../sections/auth/register';
 
 // ----------------------------------------------------------------------
 
@@ -46,21 +46,19 @@ export default function LoginPage() {
   return (
     <>
       <Helmet>
-        <title> Login | Minimal UI </title>
+        <title> Register | Minimal UI </title>
       </Helmet>
-
-      <StyledRoot>
 
         <Container maxWidth="sm">
           <StyledContent>
             <Typography variant="h4" gutterBottom>
-              Sign in to Minimal
+              Sign up to Minimal
             </Typography>
 
             {/* Aqui vamos a poner un link a la pantalla registro */}
             <Typography variant="body2" sx={{ mb: 5 }}>
-              Don’t have an account? {''}
-              <Link variant="subtitle2" href='/register'>Get started</Link>
+              Already have an account? {''}
+              <Link variant="subtitle2" href='/login'>Hop on it!</Link>
             </Typography>
 
             {/*             <Stack direction="row" spacing={2}>
@@ -83,10 +81,9 @@ export default function LoginPage() {
               </Typography>
             </Divider> */}
 
-            <LoginForm />
+            <RegisterForm />
           </StyledContent>
         </Container>
-      </StyledRoot>
     </>
   );
 }

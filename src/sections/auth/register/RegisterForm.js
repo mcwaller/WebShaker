@@ -8,7 +8,7 @@ import Iconify from '../../../components/iconify';
 
 // ----------------------------------------------------------------------
 
-export default function LoginForm() {
+export default function RegisterForm() {
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -20,7 +20,12 @@ export default function LoginForm() {
   return (
     <>
       <Stack spacing={3}>
+        <TextField name="name" label="Name" />
+        <TextField name="second_name" label="Second Name" />
+
+
         <TextField name="email" label="Email address" />
+        <TextField name="phone_number" label="Phone Number" />
 
         <TextField
           name="password"
@@ -46,7 +51,7 @@ export default function LoginForm() {
         onClick={handleClick}
         style={{ marginTop: 20 }}
       >
-        Login
+        Sign Up
       </LoadingButton>
     </>
   );

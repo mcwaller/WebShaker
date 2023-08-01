@@ -8,9 +8,9 @@ import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
 import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
-
+import RegisterPage from './pages/RegisterPage';
 // ----------------------------------------------------------------------
-
+/* Aqui se agregan los path weones */
 export default function Router() {
   const routes = useRoutes([
     {
@@ -22,15 +22,19 @@ export default function Router() {
         { path: 'user', element: <UserPage /> },
         { path: 'products', element: <ProductsPage /> },
       ],
-    },
+    },/* Aqui es el login page y register */
     {
       path: 'login',
       element: <LoginPage />,
     },
     {
+      path: 'register',
+      element: <RegisterPage />,
+    },
+    {
       element: <SimpleLayout />,
       children: [
-        { element: <Navigate to="/dashboard/app" />, index: true },
+        { element: <Navigate to="/login" />, index: true },
         { path: '404', element: <Page404 /> },
         { path: '*', element: <Navigate to="/404" /> },
       ],
