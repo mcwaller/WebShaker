@@ -1,8 +1,8 @@
 // ----------------------------------------------------------------------
 /* Aqui pones al pendejo */
 const account = {
-  displayName: 'Yanfer Taxicorta',
-  email: 'cucksonline@fursona5.cc',
+  displayName: 'Yanfer Taxilaga',
+  email: 'persona5@outlook.com',
   photoURL: '/assets/images/avatars/awwogga.jpg',
 };
 

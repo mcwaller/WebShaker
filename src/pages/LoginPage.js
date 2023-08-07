@@ -46,21 +46,22 @@ export default function LoginPage() {
   return (
     <>
       <Helmet>
-        <title> Login | Minimal UI </title>
+        <title> Login </title>
       </Helmet>
 
       <StyledRoot>
-
         <Container maxWidth="sm">
           <StyledContent>
             <Typography variant="h4" gutterBottom>
-              Sign in to Minimal
+              Sign In
             </Typography>
 
             {/* Aqui vamos a poner un link a la pantalla registro */}
             <Typography variant="body2" sx={{ mb: 5 }}>
               Don’t have an account? {''}
-              <Link variant="subtitle2" href='/register'>Get started</Link>
+              <Link variant="subtitle2" href="/register">
+                Get started
+              </Link>
             </Typography>
 
             {/*             <Stack direction="row" spacing={2}>

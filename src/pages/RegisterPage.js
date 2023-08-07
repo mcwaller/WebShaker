@@ -46,22 +46,24 @@ export default function LoginPage() {
   return (
     <>
       <Helmet>
-        <title> Register | Minimal UI </title>
+        <title> Register </title>
       </Helmet>
 
-        <Container maxWidth="sm">
-          <StyledContent>
-            <Typography variant="h4" gutterBottom>
-              Sign up to Minimal
-            </Typography>
+      <Container maxWidth="sm">
+        <StyledContent>
+          <Typography variant="h4" gutterBottom>
+            Sign Up
+          </Typography>
 
-            {/* Aqui vamos a poner un link a la pantalla registro */}
-            <Typography variant="body2" sx={{ mb: 5 }}>
-              Already have an account? {''}
-              <Link variant="subtitle2" href='/login'>Hop on it!</Link>
-            </Typography>
+          {/* Aqui vamos a poner un link a la pantalla registro */}
+          <Typography variant="body2" sx={{ mb: 5 }}>
+            Already have an account? {''}
+            <Link variant="subtitle2" href="/login">
+              Hop on it!
+            </Link>
+          </Typography>
 
-            {/*             <Stack direction="row" spacing={2}>
+          {/*             <Stack direction="row" spacing={2}>
               <Button fullWidth size="large" color="inherit" variant="outlined">
                 <Iconify icon="eva:google-fill" color="#DF3E30" width={22} height={22} />
               </Button>
@@ -81,9 +83,9 @@ export default function LoginPage() {
               </Typography>
             </Divider> */}
 
-            <RegisterForm />
-          </StyledContent>
-        </Container>
+          <RegisterForm />
+        </StyledContent>
+      </Container>
     </>
   );
 }
