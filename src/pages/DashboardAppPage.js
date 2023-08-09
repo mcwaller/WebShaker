@@ -1,9 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { faker } from '@faker-js/faker';
-import Highcharts from 'highcharts';
-import HighchartsReact from 'highcharts-react-official';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography } from '@mui/material';
@@ -31,123 +28,41 @@ import {
 
 export default function DashboardAppPage() {
   const theme = useTheme();
-  /*   const [sensorData, setSensorData] = useState([]);*/
+  const [mongoValues, setMongoValues] = useState([]);
+  const [earthMoist, setEarthMoist] = useState([]);
+  const [airMoisture, setAirMoisture] = useState([]);
+  const [airTemperature, setAirTemperature] = useState([]);
+  const [luxValues, setLuxianValues] = useState([]);
+
   const fetchSensorData = () => {
     axios
-      .get('http://localhost:8000/api/messageplus')
+      .get('http://localhost:3011/departamentos')
       .then((response) => {
-        console.log(response.data);
+        // Assuming the API response is an array of objects
+        const data = response.data.slice(-12);
+
+        // Process the data and update the state arrays
+        setMongoValues(data.map((item) => item.DATE_TIME));
+        setEarthMoist(data.map((item) => parseInt(item.RH, 10)));
+        setAirMoisture(data.map((item) => parseInt(item.HUM, 10)));
+        setLuxianValues(data.map((item) => parseInt(item.LUX, 10)));
+        setAirTemperature(data.map((item) => parseInt(item.T, 10)));
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  const datadata = fetchSensorData();
-  console.log(datadata);
-
   useEffect(() => {
     fetchSensorData();
+
+    const interval = setInterval(() => {
+      fetchSensorData();
+    }, 3000);
+
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
-
-  /* console.log(logMovies()); */
-  const mongoValues = [
-    '01:00',
-    '02:00',
-    '03:00',
-    '04:00',
-    '05:00',
-    '06:00',
-    '07:00',
-    '08:00',
-    '09:00',
-    '10:00',
-    '11:00',
-    '12:00',
-  ];
-  const earthMoist = [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30, 10];
-  const airMoisture = [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39, 10];
-  const airTemperature = [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43, 10];
-  const highchartsOptions = {
-    title: {
-      text: 'U.S Solar Employment Growth',
-      align: 'left',
-    },
-
-    subtitle: {
-      text: 'By Job Category. Source: <a href="https://irecusa.org/programs/solar-jobs-census/" target="_blank">IREC</a>.',
-      align: 'left',
-    },
-
-    yAxis: {
-      title: {
-        text: 'Number of Employees',
-      },
-    },
-
-    xAxis: {
-      accessibility: {
-        rangeDescription: 'Range: 2010 to 2020',
-      },
-    },
-
-    legend: {
-      layout: 'vertical',
-      align: 'right',
-      verticalAlign: 'middle',
-    },
-
-    plotOptions: {
-      series: {
-        label: {
-          connectorAllowed: false,
-        },
-        pointStart: 2010,
-      },
-    },
-
-    series: [
-      {
-        name: 'Installation & Developers',
-        data: [43934, 48656, 65165, 81827, 112143, 142383, 171533, 165174, 155157, 161454, 154610],
-      },
-      {
-        name: 'Manufacturing',
-        data: [24916, 37941, 29742, 29851, 32490, 30282, 38121, 36885, 33726, 34243, 31050],
-      },
-      {
-        name: 'Sales & Distribution',
-        data: [11744, 30000, 16005, 19771, 20185, 24377, 32147, 30912, 29243, 29213, 25663],
-      },
-      {
-        name: 'Operations & Maintenance',
-        data: [null, null, null, null, null, null, null, null, 11164, 11218, 10077],
-      },
-      {
-        name: 'Other',
-        data: [21908, 5548, 8105, 11248, 8989, 11816, 18274, 17300, 13053, 11906, 10073],
-      },
-    ],
-
-    responsive: {
-      rules: [
-        {
-          condition: {
-            maxWidth: 500,
-          },
-          chartOptions: {
-            legend: {
-              layout: 'horizontal',
-              align: 'center',
-              verticalAlign: 'bottom',
-            },
-          },
-        },
-      ],
-    },
-  };
-  useEffect(() => {
-    Highcharts.chart('container', highchartsOptions);
-  }, [highchartsOptions]);
   return (
     <>
       <Helmet>
@@ -209,11 +124,11 @@ export default function DashboardAppPage() {
 
           <Grid item xs={12} md={6} lg={4}>
             <AppCurrentVisits
-              title="Pie yummy"
+              title="Current values"
               chartData={[
-                { label: 'Earth Humidity', value: 4344 },
-                { label: 'Air Humidity', value: 5435 },
-                { label: 'Air Temperature', value: 1443 },
+                { label: 'Earth Humidity', value: earthMoist[11] },
+                { label: 'Air Humidity', value: airMoisture[11] },
+                { label: 'Air Temperature', value: airTemperature[11] },
               ]}
               chartColors={[
                 theme.palette.primary.main,
@@ -225,38 +140,6 @@ export default function DashboardAppPage() {
           </Grid>
         </Grid>
       </Container>
-      <Container maxWidth="xl">
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <figure className="highcharts-figure">
-              <div id="container" />
-              <p className="highcharts-description">
-                Basic line chart showing trends in temperature and humidity data.
-              </p>
-            </figure>
-          </Grid>
-        </Grid>
-      </Container>
-      <div>
-        <button onClick={fetchSensorData}>getapi</button>
-      </div>
-      {/* <Container maxWidth="xl">
-        <Typography variant="h4" sx={{ mb: 5 }}>
-          Sensor Data
-        </Typography>
-
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <ul>
-              {sensorData.map((data) => (
-                <li key={data.ID}>
-                  Date Time: {data.DATE_TIME}, Temperature: {data.T}, Humidity: {data.RH}
-                </li>
-              ))}
-            </ul>
-          </Grid>
-        </Grid>
-      </Container> */}
     </>
   );
 }

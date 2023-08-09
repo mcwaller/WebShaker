@@ -20,6 +20,9 @@ export default function AppWebsiteVisits({ title, subheader, chartLabels, chartD
 
   const chartOptions = useChart({
     plotOptions: { bar: { columnWidth: '16%' } },
+    stroke: {
+      curve: 'smooth',
+    },
     fill: { type: chartData.map((i) => i.fill) },
     labels: timeFormatLabels, // Use the modified time format labels
     xaxis: { type: 'category' }, // Change x-axis type to 'category' since we are using time labels

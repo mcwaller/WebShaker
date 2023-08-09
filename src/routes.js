@@ -9,6 +9,7 @@ import Page404 from './pages/Page404';
 import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
 import RegisterPage from './pages/RegisterPage';
+import ProfilePage from './pages/ProfilePage';
 // ----------------------------------------------------------------------
 /* Aqui se agregan los path weones */
 export default function Router() {
@@ -21,8 +22,9 @@ export default function Router() {
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'user', element: <UserPage /> },
         { path: 'products', element: <ProductsPage /> },
+        { path: 'profile', element: <ProfilePage /> },
       ],
-    },/* Aqui es el login page y register */
+    } /* Aqui es el login page y register */,
     {
       path: 'login',
       element: <LoginPage />,
@@ -31,6 +33,7 @@ export default function Router() {
       path: 'register',
       element: <RegisterPage />,
     },
+
     {
       element: <SimpleLayout />,
       children: [
