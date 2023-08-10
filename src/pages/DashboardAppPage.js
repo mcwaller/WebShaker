@@ -5,7 +5,6 @@ import axios from 'axios';
 import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography } from '@mui/material';
 // components
-import Iconify from '../components/iconify';
 // sections
 import {
   AppTasks,
