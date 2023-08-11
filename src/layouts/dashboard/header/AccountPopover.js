@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton, Popover } from '@mui/material';
@@ -28,9 +28,13 @@ export default function AccountPopover() {
     setOpen(null);
   };
 
+  const handleProfile = () => {
+    navigate('/dashboard/profile');
+  };
+
   /* Remplazen esta cosa y diganle que mate sesion y lo envie al login */
-  const handleLogout = () =>{
-    navigate('/login'); 
+  const handleLogout = () => {
+    navigate('/login');
   };
 
   return (
@@ -87,7 +91,7 @@ export default function AccountPopover() {
 
         <Stack sx={{ p: 1 }}>
           {MENU_OPTIONS.map((option) => (
-            <MenuItem key={option.label} onClick={handleClose}>
+            <MenuItem key={option.label} onClick={handleProfile}>
               {option.label}
             </MenuItem>
           ))}

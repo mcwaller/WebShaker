@@ -21,6 +21,11 @@ const navConfig = [
     path: '/dashboard/profile',
     icon: icon('ic_user'),
   },
+  {
+    title: 'Readings',
+    path: '/dashboard/tables',
+    icon: icon('ic_tables'),
+  },
   /*   {
     title: 'Not found',
     path: '/404',

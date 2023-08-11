@@ -42,8 +42,8 @@ export default function DashboardAppPage() {
 
         // Process the data and update the state arrays
         setMongoValues(data.map((item) => item.DATE_TIME));
-        setEarthMoist(data.map((item) => parseInt(item.RH, 10)));
-        setAirMoisture(data.map((item) => parseInt(item.HUM, 10)));
+        setEarthMoist(data.map((item) => parseInt(item.HUM, 10)));
+        setAirMoisture(data.map((item) => parseInt(item.RH, 10)));
         setLuxianValues(data.map((item) => parseInt(item.LUX, 10)));
         setAirTemperature(data.map((item) => parseInt(item.T, 10)));
       })

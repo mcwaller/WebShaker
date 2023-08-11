@@ -10,6 +10,7 @@ import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
 import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
+import TablePage from './pages/TablePage';
 // ----------------------------------------------------------------------
 /* Aqui se agregan los path weones */
 export default function Router() {
@@ -23,6 +24,7 @@ export default function Router() {
         { path: 'user', element: <UserPage /> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'profile', element: <ProfilePage /> },
+        { path: 'tables', element: <TablePage /> },
       ],
     } /* Aqui es el login page y register */,
     {
