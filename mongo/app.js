@@ -23,7 +23,7 @@ const user = "Luis"; //'lecsaenz02'
 const pwd = "0123456789"; //'zoyWEL7C5GvDF6gp'
 const db = "greencastle";
 const uri = `mongodb+srv://${user}:${pwd}@clus.yi5exca.mongodb.net/${db}?retryWrites=true&w=majority`;
-const uri2 = `mongodb+srv://Fallen:halo3.pkmn@fallensandbox.9kk8zle.mongodb.net/iotdb_0321101348`;
+/* const uri2 = `mongodb+srv://Fallen:halo3.pkmn@fallensandbox.9kk8zle.mongodb.net/iotdb_0321101348`;*/
 mongoose
   .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("BD conectada profe!"))
@@ -40,6 +40,10 @@ app.get("/departamentos", async (req, res) => {
   }
 });
 /* 
+
+
+
+
 app.get("/squares", async (req, res) => {
   try {
     const ghouse = await GHOUSE.find().lean();

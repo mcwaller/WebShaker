@@ -62,7 +62,7 @@ def on_message(client, userdata, msg):
             strLux = str(LUX) """
             ##formato date
             current_datetime = datetime.datetime.now()
-            time_only = current_datetime.strftime('%H:%M')
+            time_only = current_datetime.strftime('%Y-%m-%d %H:%M')
 
             strHum = str(RH)
             strTemp = str(T)
